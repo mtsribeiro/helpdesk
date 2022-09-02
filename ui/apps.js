@@ -1,3 +1,13 @@
+carregamentoStatico('/general.html', '#general')
+
+function carregamentoStatico(arquivo, local){
+    fetch(arquivo)
+  .then(response => response.text())
+  .then(text => {
+    $(local).html(text)
+})
+}
+
 document.addEventListener("DOMContentLoaded", function(event) {
    
     const showNavbar = (toggleId, navId, bodyId, headerId) =>{
