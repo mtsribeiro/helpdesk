@@ -1,4 +1,5 @@
-carregamentoStatico('/general.html', '#general')
+carregamentoStatico('/appGeneral.html', '#AppGeneral')
+carregamentoStatico('/appChamados.html', '#AppChamados')
 
 function carregamentoStatico(arquivo, local){
     fetch(arquivo)
@@ -46,3 +47,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
      // Your code to run since DOM is loaded and ready
     });
+
+/*=============================================
+                    CHAMADOS
+===============================================*/
+
+/*FECHA APLICAÇÃO*/
+$("#Close-app").click(function(){
+
+  $.ajax({
+    url : "/fechaAplicacao",
+    type : 'post'
+  })
+})
+
+/*TROCA DE JANELA*/
+$("#btn-openDashboard").click(function(){
+  $('#AppChamados').css('display', 'none')
+  $('#AppGeneral').css('display', 'block')
+})
+
+$("#btn-openChamados").click(function(){
+  $('#AppGeneral').css('display', 'none')
+  $('#AppChamados').css('display', 'block')
+})

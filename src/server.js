@@ -31,6 +31,11 @@ function createWindow() {
       })
 }
 
+/*FECHA APLICAÇÃO*/
+app.post('/fechaAplicacao', async (req, res) => {
+    window.close()
+})
+
 server.listen(port, () => {
     console.log(`Servidor web em execução: http://localhost:${port}`);
 });
