@@ -1,24 +1,129 @@
-<div class="container" style="padding-top: 5px">
-    <table id="example" class="display" style="width:100%">
+<div class="container" style="padding-top: 5px;">
+  <div class="row">
+    <div class="col-12">
+      <form>
+        <div class="row mb-2">
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" for="form6Example1">Responsavel</label>
+              <input type="text" id="responsavelChamado" class="form-control" />
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" for="form6Example2"
+                >TI Responsavel</label
+              >
+              <input type="text" id="TiChamado" class="form-control" />
+            </div>
+          </div>
+        </div>
+        <div class="form-outline mb-2">
+          <label class="form-label" for="form6Example3">Assunto</label>
+          <input type="text" id="AssuntoChamado" class="form-control" />
+        </div>
+        <div class="form-outline mb-2">
+          <label class="form-label" for="form6Example4">Categoria</label>
+          <input type="text" id="CategoriaChamado" class="form-control" />
+        </div>
+        <div class="row mb-2">
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" for="form6Example1">Prioridade</label>
+              <input type="text" id="PrioridadeChamado" class="form-control" />
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" for="form6Example2">Sprint</label>
+              <input type="text" id="SprintChamado" class="form-control" />
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" for="form6Example2">Situação</label>
+              <input type="text" id="SituacaoChamado" class="form-control" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" for="form6Example1">Descrição</label>
+              <textarea
+                rows="3"
+                type="text"
+                id="DescricaoChamado"
+                class="form-control"
+                style="max-height: 86px;"
+              ></textarea>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" for="form6Example2">Solução</label>
+              <textarea
+                rows="3"
+                type="text"
+                id="SolucacaoChamado"
+                class="form-control"
+                style="max-height: 86px;"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </form>
+      <button class="btn btn-primary btn-block w-100" id="salvaSia">Salvar</button>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-12">
+      <table id="table-Chamado" class="table table-striped" style="width: 100%">
         <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
+          <tr>
+            <th>Assunto</th>
+            <th>Categoria</th>
+            <th>Prioridade</th>
+            <th>Sprint</th>
+            <th>Situação</th>
+            <th>Responsavel</th>
+            <th>TI</th>
+          </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011-04-25</td>
-                <td>$320,800</td>
-            </tr>
-        </tbody>
-    </table>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
 </div>
+
+<script>
+  var tabela_Chamado = $("#table-Chamado").DataTable({
+    paging: true,
+    ordering: true,
+    info: false,
+    lengthChange: false,
+    rowId: "id",
+    columns: [
+      { data: "assunto" },
+      { data: "categoria" },
+      { data: "prioridade" },
+      { data: "sprint" },
+      { data: "situacao" },
+      { data: "responsavel" },
+      { data: "ti" },
+    ],
+    order: [
+      [1, "desc"],
+      [1, "desc"],
+    ],
+    ajax: {
+      url: "/QueryTabelaChamado",
+      type: "POST",
+    },
+    language: {
+      url: "//cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json",
+    },
+  });
+</script>

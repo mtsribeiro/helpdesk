@@ -5,8 +5,17 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const server = http.createServer(app);
+const {carregaResultado} = require('./consulta')
 
 const port = 9000;
+
+app.use(
+    express.urlencoded({
+      extended: true,
+    })
+  );
+  
+  app.use(express.json());
 
 app.use('/', express.static(path.join(__dirname, '../ui')))
 
@@ -36,7 +45,49 @@ app.post('/fechaAplicacao', async (req, res) => {
     window.close()
 })
 
-server.listen(port, () => {
+app.post('/QueryTabelaChamado', async function (req, res) {
+  
+    var arrayLiteral2 = [];
+  
+    var sql = `SELECT * FROM sias`;
+  
+    const conn = await getConnection();
+    await conn.query(sql, function(err2, results){
+  
+                
+      results.forEach(e => {
+  
+        var objeto = {
+          id: e.idsias,
+          assunto: e.assunto,
+          categoria: e.categoria,
+          prioridade: e.prioridade,
+          sprint: e.sprint,
+          situacao: e.situacao,
+          responsavel: e.responsavel,
+          ti: e.ti
+      }
+    
+            arrayLiteral2.push(objeto);
+          })
+  
+          let saida = {
+            "draw": 1,
+            "recordsTotal": results.length,
+            "recordsFiltered": results.length,
+            "data": arrayLiteral2
+          } 
+          res.json(saida)
+  
+        })
+  })
+
+app.post('/sobeFormularioChamado', async function (req, res) {
+    var retornaChamado = await carregaResultado(req.body.id)
+    res.json(retornaChamado)
+})
+
+  server.listen(port, () => {
     console.log(`Servidor web em execução: http://localhost:${port}`);
 });
 

@@ -15,7 +15,7 @@ html{
     --nav-width: 68px;
     --first-color: #cc2424;
     --first-color-light: #bbbbbb;
-    --white-color: #F7F6FB;
+    --white-color: #d3d3d3;
     --body-font: 'Nunito', sans-serif;
     --normal-font-size: 1rem;
     --z-fixed: 100
@@ -26,7 +26,7 @@ html{
 body{
     position: relative;
     margin: var(--header-height) 0 0 0;
-    padding: 0 1rem;
+    padding: 16px 1rem;
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
     transition: .5s
@@ -158,4 +158,33 @@ a{
     .body-pd{
         padding-left: calc(var(--nav-width) + 188px)
     }
+}
+
+#table-Chamado_filter{
+    float: right;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #cc2424;
+    border-color: #cc2424;
+}
+
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: var(--first-color);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(204 36 36 / 25%);
+}
+
+.btn-primary {
+    background-color: #cc2424;
+    border-color: #cc2424;
+}
+
+.btn-primary:hover {
+    background-color: #c94646;
+    border-color: #c94646;
 }

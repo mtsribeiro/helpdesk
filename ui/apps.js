@@ -1,3 +1,5 @@
+const e = require("express");
+
 carregamentoStatico('/appGeneral.html', '#AppGeneral')
 carregamentoStatico('/appChamados.html', '#AppChamados')
 
@@ -44,8 +46,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
     }
     linkColor.forEach(l=> l.addEventListener('click', colorLink))
-    
-     // Your code to run since DOM is loaded and ready
     });
 
 /*=============================================
@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 /*FECHA APLICAÇÃO*/
 $("#Close-app").click(function(){
-
   $.ajax({
     url : "/fechaAplicacao",
     type : 'post'
@@ -62,12 +61,38 @@ $("#Close-app").click(function(){
 })
 
 /*TROCA DE JANELA*/
+/*DASHBOARD*/
 $("#btn-openDashboard").click(function(){
   $('#AppChamados').css('display', 'none')
   $('#AppGeneral').css('display', 'block')
 })
 
+/*CHAMADOS*/
 $("#btn-openChamados").click(function(){
   $('#AppGeneral').css('display', 'none')
   $('#AppChamados').css('display', 'block')
+})
+
+$(document).on('dblclick', '#table-Chamado tr', function(){
+  var id = $(this).attr('id')
+  $.ajax({
+    url : "/sobeFormularioChamado",
+    type : 'post',
+    async: true,
+    data : {id : id},
+    success: function (data) {
+      $('#responsavelChamado').val(data[0].responsavel)
+      $('#TiChamado').val(data[0].ti)
+
+      $('#AssuntoChamado').val(data[0].assunto)
+      $('#CategoriaChamado').val(data[0].categoria)
+
+      $('#PrioridadeChamado').val(data[0].prioridade)
+      $('#SprintChamado').val(data[0].sprint)
+      $('#SituacaoChamado').val(data[0].situacao)
+
+      $('#DescricaoChamado').val(data[0].descricao)
+      $('#SolucacaoChamado').val(data[0].solucao)
+    }
+  })
 })
