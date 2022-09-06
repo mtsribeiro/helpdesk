@@ -7,11 +7,15 @@ const path = require('path');
 const server = http.createServer(app);
 const {carregaResultado} = require('./consulta')
 const {retornaUpdate} = require('./alteracao')
+const notifier = require('node-notifier');
 
 const port = 9000;
 
 function NotificacaoAlterouSia () {
-  new Notification({ title: 'Chamado', body: 'Alterado chamado' }).show()
+  notifier.notify({
+    title: 'HelpDesk',
+    message: 'Alterado com sucesso.'
+  });
 }
 
 app.use(
