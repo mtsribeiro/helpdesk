@@ -73,6 +73,7 @@ $("#btn-openChamados").click(function(){
   $('#AppChamados').css('display', 'block')
 })
 
+/*EDITAR CLIQUE*/
 $(document).on('dblclick', '#table-Chamado tr', function(){
   var id = $(this).attr('id')
   $.ajax({
@@ -81,6 +82,7 @@ $(document).on('dblclick', '#table-Chamado tr', function(){
     async: true,
     data : {id : id},
     success: function (data) {
+      $('#idChamado').val(data[0].idsias)
       $('#responsavelChamado').val(data[0].responsavel)
       $('#TiChamado').val(data[0].ti)
 
@@ -93,6 +95,55 @@ $(document).on('dblclick', '#table-Chamado tr', function(){
 
       $('#DescricaoChamado').val(data[0].descricao)
       $('#SolucacaoChamado').val(data[0].solucao)
+    }
+  })
+})
+
+$(document).on('click', '#salvaSia', function(){
+  var idChamado = $('#idChamado').val()
+  var responsavelChamado = $('#responsavelChamado').val()
+  var tiChamado = $('#TiChamado').val()
+
+  var AssuntoChamado = $('#AssuntoChamado').val()
+  var CategoriaChamado = $('#CategoriaChamado').val()
+
+  var PrioridadeChamado = $('#PrioridadeChamado').val()
+  var SprintChamado = $('#SprintChamado').val()
+  var SituacaoChamado = $('#SituacaoChamado').val()
+
+  var DescricaoChamado = $('#DescricaoChamado').val()
+  var SolucacaoChamado = $('#SolucacaoChamado').val()
+
+  $.ajax({
+    url : "/salvarFormularioChamado",
+    type : 'post',
+    async: true,
+    data : {idsias : idChamado,
+            responsavel : responsavelChamado,
+            ti : tiChamado,
+            assunto : AssuntoChamado,
+            categoria : CategoriaChamado,
+            prioridade : PrioridadeChamado,
+            sprint : SprintChamado,
+            situacao : SituacaoChamado,
+            descricao : DescricaoChamado,
+            solucao : SolucacaoChamado},
+    success: function (data) {
+      tabela_Chamado.ajax.reload();
+
+      $('#idChamado').val('')
+      $('#responsavelChamado').val('')
+      $('#TiChamado').val('')
+
+      $('#AssuntoChamado').val('')
+      $('#CategoriaChamado').val('')
+
+      $('#PrioridadeChamado').val('')
+      $('#SprintChamado').val('')
+      $('#SituacaoChamado').val('')
+
+      $('#DescricaoChamado').val('')
+      $('#SolucacaoChamado').val('')
     }
   })
 })

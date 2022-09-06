@@ -188,3 +188,9 @@ a{
     background-color: #c94646;
     border-color: #c94646;
 }
+
+.btn-primary:focus{
+    background-color: var(--first-color);
+    border-color: var(--first-color);
+    box-shadow: 0 0 0 0.25rem rgb(204 36 36 / 25%);
+}

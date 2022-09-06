@@ -6,8 +6,13 @@ const app = express();
 const path = require('path');
 const server = http.createServer(app);
 const {carregaResultado} = require('./consulta')
+const {retornaUpdate} = require('./alteracao')
 
 const port = 9000;
+
+function NotificacaoAlterouSia () {
+  new Notification({ title: 'Chamado', body: 'Alterado chamado' }).show()
+}
 
 app.use(
     express.urlencoded({
@@ -87,8 +92,14 @@ app.post('/sobeFormularioChamado', async function (req, res) {
     res.json(retornaChamado)
 })
 
+app.post('/salvarFormularioChamado', async function (req, res) {
+    var carregaUpdate = await retornaUpdate(req.body);
+    NotificacaoAlterouSia();
+    res.json('Alterou')
+})
+
   server.listen(port, () => {
-    console.log(`Servidor web em execução: http://localhost:${port}`);
+    console.log(`Servidor web em: http://localhost:${port}`);
 });
 
 module.exports = {
