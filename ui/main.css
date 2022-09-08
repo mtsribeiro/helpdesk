@@ -46,8 +46,14 @@ a{
     padding: 0 1rem;
     background-color: var(--white-color);
     z-index: var(--z-fixed);
-    transition: .5s
+    transition: .5s;
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
 }
+
+.header-button{
+    -webkit-app-region: no-drag;
+  }
 .header_toggle{
     color: var(--first-color);
     font-size: 1.5rem;
