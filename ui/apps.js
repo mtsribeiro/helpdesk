@@ -2,6 +2,7 @@ const e = require("express");
 
 carregamentoStatico('/appGeneral.html', '#AppGeneral')
 carregamentoStatico('/appChamados.html', '#AppChamados')
+carregamentoStatico('/appAbrirChamado.html', '#AppAbrirChamado')
 
 function carregamentoStatico(arquivo, local){
     fetch(arquivo)
@@ -64,13 +65,22 @@ $("#Close-app").click(function(){
 /*DASHBOARD*/
 $("#btn-openDashboard").click(function(){
   $('#AppChamados').css('display', 'none')
+  $('#AppAbrirChamado').css('display', 'none')
   $('#AppGeneral').css('display', 'block')
 })
 
 /*CHAMADOS*/
 $("#btn-openChamados").click(function(){
   $('#AppGeneral').css('display', 'none')
+  $('#AppAbrirChamado').css('display', 'none')
   $('#AppChamados').css('display', 'block')
+})
+
+/*ABRIR CHAMADOS*/
+$("#btn-openAbrirChamado").click(function(){
+  $('#AppGeneral').css('display', 'none')
+  $('#AppChamados').css('display', 'none')
+  $('#AppAbrirChamado').css('display', 'block')
 })
 
 /*EDITAR CLIQUE*/
@@ -99,6 +109,7 @@ $(document).on('dblclick', '#table-Chamado tr', function(){
   })
 })
 
+/*SALVA SIA*/
 $(document).on('click', '#salvaSia', function(){
   var idChamado = $('#idChamado').val()
   var responsavelChamado = $('#responsavelChamado').val()
@@ -144,6 +155,51 @@ $(document).on('click', '#salvaSia', function(){
 
       $('#DescricaoChamado').val('')
       $('#SolucacaoChamado').val('')
+    }
+  })
+})
+
+/*INSERE SIA*/
+$(document).on('click', '#insereSia', function(){
+  var idChamadoInsere = $('#idChamadoInsere').val()
+  var responsavelChamadoInsere = $('#responsavelChamadoInsere').val()
+
+  var AssuntoChamadoInsere = $('#AssuntoChamadoInsere').val()
+  var CategoriaChamadoInsere = $('#CategoriaChamadoInsere').val()
+
+  var PrioridadeChamadoInsere = $('#PrioridadeChamadoInsere').val()
+  var SituacaoChamadoInsere = $('#SituacaoChamadoInsere').val()
+
+  var DescricaoChamadoInsere = $('#DescricaoChamadoInsere').val()
+  var SolucacaoChamadoInsere = $('#SolucacaoChamadoInsere').val()
+
+  $.ajax({
+    url : "/InsereFormularioChamado",
+    type : 'post',
+    async: true,
+    data : {idsias : idChamadoInsere,
+            responsavel : responsavelChamadoInsere,
+            assunto : AssuntoChamadoInsere,
+            categoria : CategoriaChamadoInsere,
+            prioridade : PrioridadeChamadoInsere,
+            descricao : DescricaoChamadoInsere,
+            solucao : SolucacaoChamadoInsere},
+    success: function (data) {
+      tabela_Chamado.ajax.reload();
+
+      $('#idChamadoInsere').val('')
+      $('#responsavelChamadoInsere').val('')
+      $('#TiChamadoInsere').val('')
+
+      $('#AssuntoChamadoInsere').val('')
+      $('#CategoriaChamadoInsere').val('')
+
+      $('#PrioridadeChamadoInsere').val('')
+      $('#SprintChamadoInsere').val('')
+      $('#SituacaoChamadoInsere').val('')
+
+      $('#DescricaoChamadoInsere').val('')
+      $('#SolucacaoChamadoInsere').val('')
     }
   })
 })
