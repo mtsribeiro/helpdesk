@@ -114,7 +114,39 @@ app.post('/salvarFormularioChamado', async function (req, res) {
     var situacao = req.body.situacao;
     var sprint = req.body.sprint;
     var responsavel = req.body.responsavel;
-    var html = `<td id="m_5802995636410960008m_-284055676835661507header-Logo-cta0a4e22de-622c-4c98-9dc7-25eb34d738f0" dir="ltr" style="padding:24px 24px 24px 30px" valign="top">
+
+    if (situacao == 'Finalizado')
+    {
+      var html = `<td id="m_5802995636410960008m_-284055676835661507header-Logo-cta0a4e22de-622c-4c98-9dc7-25eb34d738f0" dir="ltr" style="padding:24px 24px 24px 30px" valign="top">
+      <table style="max-width:600px;width:100%" role="presentation" border="0" width="600" cellspacing="0" cellpadding="0" align="left">
+        <tbody>
+          <tr>
+            <td style="font-family:'Google Sans','Noto Sans JP',Arial,sans-serif;padding-left:20px;font-size:14px;vertical-align:middle;width:99.6283%;text-align:right" align="left" valign="middle" width="300">
+              <p>
+                <img style="float:left" src="https://ci5.googleusercontent.com/proxy/wtAJkMQJwIRQipMHOw_9fyNG8lenQ-ZcvdDoENFMHNG04lMjrriYhIn3iEzYT0H3B5Ii0BhhsOlTiJDJ8wVLWQ=s0-d-e1-ft#https://conlinebr.com.br/logosirius_preta.png" alt="Google Cloud" width="154" height="61" class="CToWUd" data-bit="iit"></p>
+            </td>
+            <td style="font-family:'Google Sans','Noto Sans JP',Arial,sans-serif;font-size:14px;vertical-align:middle;width:55.7621%;text-align:right;display:none" align="right" valign="middle" width="300">
+              <table role="presentation" border="0" cellspacing="0" cellpadding="0" align="right">
+                <tbody>
+                  <tr>
+                    <td dir="ltr" style="border-radius:4px" align="right" bgcolor="#1a73e8">
+                      <a style="font-family:'Google Sans','Noto Sans JP',Arial,sans-serif;color:#ffffff;text-decoration:none;font-size:14px;letter-spacing:1px;font-weight:bold;border-radius:4px;border:1px solid #1a73e8;margin:0;padding:14px 16px 14px 16px;display:inline-block" href="https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGFu64YaFlB_CTrqKZdd6nw54VKpoijqn9z6z0Iu0R9XB3LClbCbQUq9KfEltcl-sGBc-Vrseo=" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGFu64YaFlB_CTrqKZdd6nw54VKpoijqn9z6z0Iu0R9XB3LClbCbQUq9KfEltcl-sGBc-Vrseo%3D&amp;source=gmail&amp;ust=1662742549311000&amp;usg=AOvVaw3926zLP6hdVgr1_zx3YlAy"></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+      
+      <h4>Olá</h4>
+    
+      <p>Seu chamado se encontra ${situacao}.<br>
+      Caso houver dúvidas ou problemas, favor entrar em contato.</p>`
+    } else {
+      var html = `<td id="m_5802995636410960008m_-284055676835661507header-Logo-cta0a4e22de-622c-4c98-9dc7-25eb34d738f0" dir="ltr" style="padding:24px 24px 24px 30px" valign="top">
     <table style="max-width:600px;width:100%" role="presentation" border="0" width="600" cellspacing="0" cellpadding="0" align="left">
       <tbody>
         <tr>
@@ -127,7 +159,7 @@ app.post('/salvarFormularioChamado', async function (req, res) {
               <tbody>
                 <tr>
                   <td dir="ltr" style="border-radius:4px" align="right" bgcolor="#1a73e8">
-                    <a style="font-family:'Google Sans','Noto Sans JP',Arial,sans-serif;color:#ffffff;text-decoration:none;font-size:14px;letter-spacing:1px;font-weight:bold;border-radius:4px;border:1px solid #1a73e8;margin:0;padding:14px 16px 14px 16px;display:inline-block" href="https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGFu64YaFlB_CTrqKZdd6nw54VKpoijqn9z6z0Iu0R9XB3LClbCbQUq9KfEltcl-sGBc-Vrseo=" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGFu64YaFlB_CTrqKZdd6nw54VKpoijqn9z6z0Iu0R9XB3LClbCbQUq9KfEltcl-sGBc-Vrseo%3D&amp;source=gmail&amp;ust=1662742549311000&amp;usg=AOvVaw3926zLP6hdVgr1_zx3YlAy">Baixe agora</a>
+                    <a style="font-family:'Google Sans','Noto Sans JP',Arial,sans-serif;color:#ffffff;text-decoration:none;font-size:14px;letter-spacing:1px;font-weight:bold;border-radius:4px;border:1px solid #1a73e8;margin:0;padding:14px 16px 14px 16px;display:inline-block" href="https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGFu64YaFlB_CTrqKZdd6nw54VKpoijqn9z6z0Iu0R9XB3LClbCbQUq9KfEltcl-sGBc-Vrseo=" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGFu64YaFlB_CTrqKZdd6nw54VKpoijqn9z6z0Iu0R9XB3LClbCbQUq9KfEltcl-sGBc-Vrseo%3D&amp;source=gmail&amp;ust=1662742549311000&amp;usg=AOvVaw3926zLP6hdVgr1_zx3YlAy"></a>
                   </td>
                 </tr>
               </tbody>
@@ -143,6 +175,8 @@ app.post('/salvarFormularioChamado', async function (req, res) {
     <p>Seu chamado se encontra em ${situacao}.<br>
     Programado para finalização na semana ${sprint}.</b><br>
     Em breve retornaremos com as atualizações.</p>`
+    }
+    
     
     async function main() {
       await nodemailer.createTestAccount();
@@ -186,6 +220,7 @@ app.post('/InsereFormularioChamado', async function (req, res) {
 
   var chamado = req.body.assunto;
   var responsavel = req.body.responsavel;
+  
   var html = `<td id="m_5802995636410960008m_-284055676835661507header-Logo-cta0a4e22de-622c-4c98-9dc7-25eb34d738f0" dir="ltr" style="padding:24px 24px 24px 30px" valign="top">
   <table style="max-width:600px;width:100%" role="presentation" border="0" width="600" cellspacing="0" cellpadding="0" align="left">
     <tbody>
@@ -199,7 +234,7 @@ app.post('/InsereFormularioChamado', async function (req, res) {
             <tbody>
               <tr>
                 <td dir="ltr" style="border-radius:4px" align="right" bgcolor="#1a73e8">
-                  <a style="font-family:'Google Sans','Noto Sans JP',Arial,sans-serif;color:#ffffff;text-decoration:none;font-size:14px;letter-spacing:1px;font-weight:bold;border-radius:4px;border:1px solid #1a73e8;margin:0;padding:14px 16px 14px 16px;display:inline-block" href="https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGFu64YaFlB_CTrqKZdd6nw54VKpoijqn9z6z0Iu0R9XB3LClbCbQUq9KfEltcl-sGBc-Vrseo=" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGFu64YaFlB_CTrqKZdd6nw54VKpoijqn9z6z0Iu0R9XB3LClbCbQUq9KfEltcl-sGBc-Vrseo%3D&amp;source=gmail&amp;ust=1662742549311000&amp;usg=AOvVaw3926zLP6hdVgr1_zx3YlAy">Baixe agora</a>
+                  <a style="font-family:'Google Sans','Noto Sans JP',Arial,sans-serif;color:#ffffff;text-decoration:none;font-size:14px;letter-spacing:1px;font-weight:bold;border-radius:4px;border:1px solid #1a73e8;margin:0;padding:14px 16px 14px 16px;display:inline-block" href="https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGFu64YaFlB_CTrqKZdd6nw54VKpoijqn9z6z0Iu0R9XB3LClbCbQUq9KfEltcl-sGBc-Vrseo=" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGFu64YaFlB_CTrqKZdd6nw54VKpoijqn9z6z0Iu0R9XB3LClbCbQUq9KfEltcl-sGBc-Vrseo%3D&amp;source=gmail&amp;ust=1662742549311000&amp;usg=AOvVaw3926zLP6hdVgr1_zx3YlAy"></a>
                 </td>
               </tr>
             </tbody>
@@ -213,8 +248,8 @@ app.post('/InsereFormularioChamado', async function (req, res) {
   <h4>Olá</h4>
 
   <p>A equipe de TI recebeu seu chamado sobre: ${chamado}.<br>
-  O mesmo se encontra em situação de <b>Backlog</b>.
-  Estamos analisando seu chamado e voltaremos com mais noticias em breve.</p>`
+  O mesmo se encontra em situação de <b>Backlog</b>.<br>
+  Em breve retornaremos com as atualizações.</p>`
   
   async function main() {
     await nodemailer.createTestAccount();
