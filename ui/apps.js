@@ -139,6 +139,10 @@ $(document).on('click', '#salvaSia', function(){
             situacao : SituacaoChamado,
             descricao : DescricaoChamado,
             solucao : SolucacaoChamado},
+    beforeSend: function(data) {
+      $('#FormularioAlteracaoSia').css('display', 'none');
+      $('#loading-alteracao').css('display' ,'flex');
+    },
     success: function (data) {
       tabela_Chamado.ajax.reload();
 
@@ -155,6 +159,9 @@ $(document).on('click', '#salvaSia', function(){
 
       $('#DescricaoChamado').val('')
       $('#SolucacaoChamado').val('')
+
+      $('#FormularioAlteracaoSia').css('display', 'block');
+      $('#loading-alteracao').css('display' ,'none');
     }
   })
 })
@@ -184,6 +191,10 @@ $(document).on('click', '#insereSia', function(){
             prioridade : PrioridadeChamadoInsere,
             descricao : DescricaoChamadoInsere,
             solucao : SolucacaoChamadoInsere},
+    beforeSend: function(data) {
+      $('#FormularioInsercaoSia').css('display', 'none');
+      $('#loading-insercao').css('display' ,'flex');
+    },
     success: function (data) {
       tabela_Chamado.ajax.reload();
 
@@ -200,6 +211,9 @@ $(document).on('click', '#insereSia', function(){
 
       $('#DescricaoChamadoInsere').val('')
       $('#SolucacaoChamadoInsere').val('')
+
+      $('#FormularioInsercaoSia').css('display', 'block');
+      $('#loading-insercao').css('display' ,'none');
     }
   })
 })
