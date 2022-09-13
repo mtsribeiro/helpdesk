@@ -8,7 +8,7 @@ const server = http.createServer(app);
 const notifier = require('node-notifier');
 const nodemailer = require("nodemailer");
 
-const {carregaResultado} = require('./consulta')
+const {carregaResultado, carregaDashboard} = require('./consulta')
 const {retornaUpdate} = require('./alteracao')
 const {InsereSia} = require('./insercao')
 
@@ -59,6 +59,12 @@ function createWindow() {
         window.show()
       })
 }
+
+/*CARREGA DESHBOARD*/
+app.post('/atualizaSias', async (req, res) => {
+    var retornaDashboard = await carregaDashboard(req.body)
+    res.json(retornaDashboard)
+})
 
 /*FECHA APLICAÇÃO*/
 app.post('/fechaAplicacao', async (req, res) => {

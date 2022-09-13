@@ -11,19 +11,19 @@
     <div class="card text-black" style="max-width: 50%; border: none; background-color: #d9d9d9; margin-bottom: 20px;">
         <div class="row">
             <div class="col-3" style="padding-left: 20px; margin-top: 4px;">
-                <h4 style="font-weight: bold; margin: 0px;">42</h4>
-                <h6>pendentes</h6>
+                <h4 style="font-weight: bold; margin: 0px;" id="QtdBacklog"></h4>
+                <h6>Backlog</h6>
             </div>
             <div class="col-3">
-                <h4 style="font-weight: bold; margin: 0px; margin-top: 4px;">12</h4>
+                <h4 style="font-weight: bold; margin: 0px; margin-top: 4px;" id="QtdDesenvolvimento">12</h4>
                 <h6>Produção</h6>
             </div>
             <div class="col-3">
-                <h4 style="font-weight: bold; margin: 0px; margin-top: 4px;">5</h4>
+                <h4 style="font-weight: bold; margin: 0px; margin-top: 4px;" id="QtdTeste">5</h4>
                 <h6>Teste</h6>
             </div>
             <div class="col-3">
-                <h4 style="font-weight: bold; margin: 0px; margin-top: 4px;">26</h4>
+                <h4 style="font-weight: bold; margin: 0px; margin-top: 4px;" id="QtdFinalizado">26</h4>
                 <h6>Finalizados</h6>
             </div>
         </div>
@@ -31,47 +31,60 @@
   </div>
   <div class="row">
     <div class="col-3">
-      <div class="card text-black bg-secundary mb-3" style="background-color: #ffd3d3; border: none">
-        <div class="card-body">
-          <h6 class="card-title" style="font-weight: bold; text-align: center;">#0001</h6>
-          <p class="card-text">
-            Favor fazer isso isso e aquilo.
-          </p>
+      <h3>Backlog</h3>
+
+      <div id="SiasBacklog">
+        <div class="card border-info mb-3">
+          <div class="card-header border-info bg-info"><b>#12</b></div>
+          <div class="card-body">
+            <h5 class="card-title">Suporte HeadCargo</h5>
+            <p class="card-text">Assunto.</p>
+          </div>
         </div>
       </div>
+
     </div>
     <div class="col-3">
-      <div class="card text-black bg-secundary mb-3">
-        <div class="card-body">
-          <h4 class="card-title">Primary card title</h4>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+      <h3>Desenvolvimento</h3>
+      
+      <div id="SiasDesenvolvimento">
+        <div class="card border-warning mb-3">
+          <div class="card-header border-warning bg-warning"><b>#12</b></div>
+          <div class="card-body">
+            <h5 class="card-title">Suporte HeadCargo</h5>
+            <p class="card-text">Assunto.</p>
+          </div>
         </div>
       </div>
+
     </div>
     <div class="col-3">
-      <div class="card text-black bg-secundary mb-3">
-        <div class="card-body">
-          <h4 class="card-title">Primary card title</h4>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+      <h3>Teste</h3>
+      
+      <div id="SiasTeste">
+        <div class="card border-danger mb-3">
+          <div class="card-header border-danger bg-danger"><b>#12</b></div>
+          <div class="card-body">
+            <h5 class="card-title">Suporte HeadCargo</h5>
+            <p class="card-text">Assunto.</p>
+          </div>
         </div>
       </div>
+
     </div>
     <div class="col-3">
-      <div class="card text-black bg-secundary mb-3">
-        <div class="card-body">
-          <h4 class="card-title">Primary card title</h4>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+      <h3>Finalizado</h3>
+      
+      <div id="SiasFinalizadas">
+        <div class="card border-success mb-3">
+          <div class="card-header border-success bg-success"><b>#12</b></div>
+          <div class="card-body">
+            <h5 class="card-title">Suporte HeadCargo</h5>
+            <p class="card-text">Assunto.</p>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>

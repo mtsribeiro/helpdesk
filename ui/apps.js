@@ -53,6 +53,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     CHAMADOS
 ===============================================*/
 
+$.ajax({
+  url : "/atualizaSias",
+  type : 'post',
+  async: true,
+  success: function (data) {
+ 
+    $('#QtdBacklog').text(data[0].QtdBacklog)
+    $('#QtdDesenvolvimento').text(data[0].QtdDesenvolvimento)
+    $('#QtdTeste').text(data[0].QtdTeste)
+    $('#QtdFinalizado').text(data[0].QtdFinalizado)
+  }
+});
+
 /*FECHA APLICAÇÃO*/
 $("#Close-app").click(function(){
   $.ajax({
@@ -175,7 +188,6 @@ $(document).on('click', '#insereSia', function(){
   var CategoriaChamadoInsere = $('#CategoriaChamadoInsere').val()
 
   var PrioridadeChamadoInsere = $('#PrioridadeChamadoInsere').val()
-  var SituacaoChamadoInsere = $('#SituacaoChamadoInsere').val()
 
   var DescricaoChamadoInsere = $('#DescricaoChamadoInsere').val()
   var SolucacaoChamadoInsere = $('#SolucacaoChamadoInsere').val()
