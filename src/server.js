@@ -214,11 +214,10 @@ app.post('/salvarFormularioChamado', async function (req, res) {
       html: `${html}`, // html body
     });
   }
-  
-    await main().catch(console.error);
 
     await NotificacaoAlterouSia();
-    await res.json('Alterou')
+    await res.json('Alterou');
+    await main().catch(console.error);
 })
 
 app.post('/InsereFormularioChamado', async function (req, res) {
@@ -288,10 +287,9 @@ app.post('/InsereFormularioChamado', async function (req, res) {
   });
 }
 
-await main().catch(console.error);
-
 await NotificacaoInseriuSia();
 await res.json('Inseriu')
+await main().catch(console.error);
 })
 
   server.listen(port, () => {
