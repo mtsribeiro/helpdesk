@@ -1,4 +1,4 @@
-const { BrowserWindow, Notification } = require("electron");
+0const { BrowserWindow, Notification } = require("electron");
 const {getConnection} = require('./database');
 const http = require('http');
 const express = require('express');
