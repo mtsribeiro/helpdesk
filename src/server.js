@@ -8,7 +8,7 @@ const server = http.createServer(app);
 const notifier = require('node-notifier');
 const nodemailer = require("nodemailer");
 
-const {carregaResultado, carregaDashboard} = require('./consulta')
+const {carregaResultado, carregaDashboard, carregaDashboardBackLog, carregaDashboardProducao, carregaDashboardTeste, carregaDashboardFinalizado} = require('./consulta')
 const {retornaUpdate} = require('./alteracao')
 const {InsereSia} = require('./insercao')
 
@@ -61,9 +61,25 @@ function createWindow() {
 }
 
 /*CARREGA DESHBOARD*/
+app.post('/atualizaSiasBacklog', async (req, res) => {
+  var retornaDashboard = await carregaDashboardBackLog(req.body)
+  res.json(retornaDashboard)
+})
+app.post('/atualizaSiasProducao', async (req, res) => {
+  var retornaDashboard = await carregaDashboardProducao(req.body)
+  res.json(retornaDashboard)
+})
+app.post('/atualizaSiasTeste', async (req, res) => {
+  var retornaDashboard = await carregaDashboardTeste(req.body)
+  res.json(retornaDashboard)
+})
+app.post('/atualizaSiasFinalizado', async (req, res) => {
+  var retornaDashboard = await carregaDashboardFinalizado(req.body)
+  res.json(retornaDashboard)
+})
 app.post('/atualizaSias', async (req, res) => {
-    var retornaDashboard = await carregaDashboard(req.body)
-    res.json(retornaDashboard)
+  var retornaDashboard = await carregaDashboard(req.body)
+  res.json(retornaDashboard)
 })
 
 /*FECHA APLICAÇÃO*/

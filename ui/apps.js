@@ -47,12 +47,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
     }
     linkColor.forEach(l=> l.addEventListener('click', colorLink))
-    });
+});
 
 /*=============================================
                     CHAMADOS
 ===============================================*/
 
+function dashboard() {
 $.ajax({
   url : "/atualizaSias",
   type : 'post',
@@ -65,6 +66,73 @@ $.ajax({
     $('#QtdFinalizado').text(data[0].QtdFinalizado)
   }
 });
+/*ATUALIZA DASHBOARD*/
+$.ajax({
+  url : "/atualizaSiasBacklog",
+  type : 'post',
+  async: true,
+  success: function (data) {
+    data.forEach(data => {
+      $('#SiasBacklog').append(`<div class="card border-info mb-3">
+      <div class="card-header border-info bg-info"><b>#${data.idsias}</b></div>
+      <div class="card-body">
+        <h5 class="card-title">${data.categoria}</h5>
+        <p class="card-text">${data.assunto}.</p>
+      </div>
+    </div>`)
+    })
+  }
+});
+$.ajax({
+  url : "/atualizaSiasProducao",
+  type : 'post',
+  async: true,
+  success: function (data) {
+    data.forEach(data => {
+      $('#SiasDesenvolvimento').append(`<div class="card border-warning mb-3">
+      <div class="card-header border-warning bg-warning"><b>#${data.idsias}</b></div>
+      <div class="card-body">
+        <h5 class="card-title">${data.categoria}</h5>
+        <p class="card-text">${data.assunto}.</p>
+      </div>
+    </div>`)
+    })
+  }
+});
+$.ajax({
+  url : "/atualizaSiasTeste",
+  type : 'post',
+  async: true,
+  success: function (data) {
+    data.forEach(data => {
+      $('#SiasTeste').append(`<div class="card border-danger mb-3">
+      <div class="card-header border-danger bg-danger"><b>#${data.idsias}</b></div>
+      <div class="card-body">
+        <h5 class="card-title">${data.categoria}</h5>
+        <p class="card-text">${data.assunto}.</p>
+      </div>
+    </div>`)
+    })
+  }
+});
+$.ajax({
+  url : "/atualizaSiasFinalizado",
+  type : 'post',
+  async: true,
+  success: function (data) {
+    data.forEach(data => {
+      $('#SiasFinalizadas').append(`<div class="card border-success mb-3">
+      <div class="card-header border-success bg-success"><b>#${data.idsias}</b></div>
+      <div class="card-body">
+        <h5 class="card-title">${data.categoria}</h5>
+        <p class="card-text">${data.assunto}.</p>
+      </div>
+    </div>`)
+    })
+  }
+});
+}
+dashboard();
 
 /*FECHA APLICAÇÃO*/
 $("#Close-app").click(function(){
@@ -175,6 +243,8 @@ $(document).on('click', '#salvaSia', function(){
 
       $('#FormularioAlteracaoSia').css('display', 'block');
       $('#loading-alteracao').css('display' ,'none');
+      
+      dashboard();
     }
   })
 })
